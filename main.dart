@@ -26,7 +26,7 @@ class ICEIScheduleScreen extends StatelessWidget {
           title: Text('ICEI Conference Schedule'),
           bottom: TabBar(
             tabs: [
-              Tab(text: "session/presentation"),
+              Tab(text: "Ongoing"),
               Tab(text: "Track"),
               Tab(text: "days"),
               Tab(text: "extra"),
