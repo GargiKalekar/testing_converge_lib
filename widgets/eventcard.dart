@@ -1,9 +1,10 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class EventCard extends StatelessWidget {
   final String title;
   final String location;
-  final String description; // New field for details
+  final String description;
 
   const EventCard({
     required this.title,
@@ -33,32 +34,43 @@ class EventCard extends StatelessWidget {
     return Center(
       child: GestureDetector(
         onTap: () => _showDetails(context),
-        child: Card(
-          elevation: 4,
-          margin: EdgeInsets.all(12),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-          child: Padding(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 8),
-                Row(
-                  children: [
-                    Icon(Icons.location_on, size: 18, color: Colors.grey[700]),
-                    SizedBox(width: 6),
-                    Text(
-                      location,
-                      style: TextStyle(fontSize: 16, color: Colors.grey[800]),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: Container(
+              margin: EdgeInsets.all(12),
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.3), // semi-transparent
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: Colors.white.withOpacity(0.2)),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87,
                     ),
-                  ],
-                ),
-              ],
+                  ),
+                  SizedBox(height: 8),
+                  Row(
+                    children: [
+                      Icon(Icons.location_on, size: 18, color: Colors.grey[700]),
+                      SizedBox(width: 6),
+                      Text(
+                        location,
+                        style: TextStyle(fontSize: 16, color: Colors.grey[800]),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

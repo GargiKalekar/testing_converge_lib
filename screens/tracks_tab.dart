@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../widgets/eventcard.dart'; // Import the widget
+import '../widgets/eventcard.dart'; // Import your EventCard
+
 class TracksTab extends StatelessWidget {
-  // Hardcoded list of events as maps
   final List<Map<String, String>> events = [
     {
       'title': 'AI Conference',
@@ -16,30 +16,44 @@ class TracksTab extends StatelessWidget {
     {
       'title': 'Cybersecurity Panel',
       'location': 'Room 204',
-      'description':'who cares',
+      'description': 'who cares',
     },
     {
       'title': 'Startup Pitch',
       'location': 'Main Stage',
-      'description':'who cares',
+      'description': 'who cares',
     },
     {
       'title': 'Design Thinking Lab',
       'location': 'Innovation Hub',
-      'description':'who cares',
+      'description': 'who cares',
     },
   ];
+
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: EdgeInsets.all(12),
-      children: events.map((event) {
-        return EventCard(
-          title: event['title']!,
-          location: event['location']!,
-          description: event['description']!,
-        );
-      }).toList(),
+    return Stack(
+      children: [
+        // 🔽 Background Image Layer
+        Positioned.fill(
+          child: Image.asset(
+            'images/iceilogo.jpeg',
+            fit: BoxFit.cover,
+          ),
+        ),
+
+        // 🔼 Foreground ListView with translucent padding
+        ListView(
+          padding: EdgeInsets.all(12),
+          children: events.map((event) {
+            return EventCard(
+              title: event['title']!,
+              location: event['location']!,
+              description: event['description']!,
+            );
+          }).toList(),
+        ),
+      ],
     );
   }
 }

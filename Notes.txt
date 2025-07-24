@@ -1,1 +1,2 @@
-Hii is this going on git?
+When we will open our app - logo will pop up - and (loading madhe bulb chya side cha firvaycha)
+loading zala ki bulb will go on background
